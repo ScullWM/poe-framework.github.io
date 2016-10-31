@@ -1,0 +1,15 @@
+{
+    "name": "poe/doc",
+    "license": "MIT",
+    "description": "A next-generation HTTP application framework built on top of standards and generators.",
+    "authors": [
+        {
+            "name": "jubianchi",
+            "email": "contact@jubianchi.fr"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "couscous/couscous": "^1.5"
+    }
+}

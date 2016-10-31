@@ -1,0 +1,13 @@
+{
+    "name": "poe",
+    "license": "MIT",
+    "description": "A next-generation HTTP application framework built on top of standards and generators.",
+    "dependencies": {
+        "bootstrap": "^3.3.7",
+        "font-awesome": "^4.7.0",
+        "fontawesome": "^4.5.0",
+        "highlight.js": "^9.7.0",
+        "jquery": "^3.1.1",
+        "less": "^2.7.1"
+    }
+}

@@ -1,0 +1,8 @@
+composer.lock
+
+vendor/
+.couscous/
+template/node_modules/
+template/css/
+template/fonts/
+template/js/

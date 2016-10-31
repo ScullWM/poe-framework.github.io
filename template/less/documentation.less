@@ -1,0 +1,73 @@
+.documentation {
+    .sidebar {
+        text-align: right;
+        float: left;
+        padding: 35px 10px 35px 0;
+        width: 120px;
+
+        @media (min-width: @screen-sm-min) {
+            width: 150px;
+        }
+
+        @media (min-width: @screen-md-min) {
+            width: 200px;
+            padding-right: 25px;
+        }
+
+        @media (min-width: @screen-lg-min) {
+            width: 250px;
+            padding-right: 35px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+
+            li {
+                font-weight: 400;
+                margin-bottom: 20px;
+                font-size: 16px;
+
+                @media (min-width: @screen-md-min) {
+                    font-size: 18px;
+                }
+
+                &.active {
+                    font-weight: bold;
+                }
+
+                ul {
+                    display: block;
+                    list-style: none;
+                    margin: 10px 0 0 0;
+                    padding: 0 0 0 10px;
+
+                    li {
+                        margin-bottom: 5px;
+                        font-size: 12px;
+
+                        @media (min-width: @screen-md-min) {
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    article {
+        margin-left: 130px;
+
+        @media (min-width: @screen-sm-min) {
+            margin-left: 200px;
+        }
+
+        @media (min-width: @screen-md-min) {
+            margin-left: 250px;
+        }
+
+        @media (min-width: @screen-lg-min) {
+            margin-left: 300px;
+        }
+    }
+}

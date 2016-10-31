@@ -1,0 +1,27 @@
+{% extends "default.twig" %}
+
+{% block content %}
+    <div class="home">
+
+        <section class="jumbotron">
+            <div class="container">
+                <h1>Poe</h1>
+
+                <p>A next-generation HTTP application framework built on top of standards and generators.</p>
+
+                <p>
+                    <a href="{{ baseUrl }}/poe-framework.github.io/docs/framework/getting-started.html" class="btn btn-lg btn-primary">
+                        Get started
+                    </a>
+                    <a href="{{ baseUrl }}/poe-framework.github.io/docs" class="btn btn-lg btn-default">
+                        Documentation
+                    </a>
+                </p>
+
+                {{ content|raw }}
+            </div>
+        </section>
+
+    </div>
+
+{% endblock %}

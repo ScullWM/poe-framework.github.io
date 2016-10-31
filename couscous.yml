@@ -1,0 +1,49 @@
+baseUrl: http://poe-framework.github.io
+
+branch: master
+
+template:
+    directory: template
+    index: README.md
+
+exclude:
+    - template/node_modules
+    - template/less
+
+scripts:
+    before:
+        - make doc
+    after:
+        - make doc-clean
+
+documentation:
+    poe:
+        section: Poe
+        items:
+            principles:
+                text: Principles
+                url: principles.html
+            middlewares:
+                text: Middlewares
+                url: middlewares.html
+            context:
+                text: Context
+                url: context.html
+    middlewares:
+        section: Middlewares
+        items:
+            application:
+                text: Application
+                url: middlewares/application.html
+            router:
+                text: Router
+                url: middlewares/router.html
+            twig:
+                text: Twig
+                url: middlewares/twig.html
+    cookbooks:
+        section: Cookbooks
+        items:
+            getting-started:
+                text: Getting Started
+                url: cookbooks/getting-started.html

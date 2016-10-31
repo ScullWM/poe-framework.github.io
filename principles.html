@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Poe - A next-generation HTTP application framework built on top of standards and generators.</title>
+
+            <link href="http://fonts.googleapis.com/css?family=Abel:400|Oswald:300,400,700" media="all" rel="stylesheet" type="text/css">
+        <link href="http://poe-framework.github.io/css/all.min.css" rel="stylesheet">
+    </head>
+<body>
+
+    <header>
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navigation">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="http://poe-framework.github.io/">Poe</a>
+                </div>
+                <div class="collapse navbar-collapse" id="top-navigation">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="http://poe-framework.github.io/poe-framework.github.io/docs">Documentation</a></li>
+                        <li><a href="http://poe-framework.github.io/middlewares/">Middlewares</a></li>
+                        <li><a class="github" href="https://github.com/poe"><i class="fa fa-github"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    
+    <div class="container documentation">
+
+        <div class="sidebar">
+            <ul>
+                                    <li>
+                        Poe
+
+                        <ul>
+                                                            <li class="active">
+                                    <a href="http://poe-framework.github.io/principles.html">
+                                        Principles
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="http://poe-framework.github.io/middlewares.html">
+                                        Middlewares
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="http://poe-framework.github.io/context.html">
+                                        Context
+                                    </a>
+                                </li>
+                                                    </ul>
+                    </li>
+                                    <li>
+                        Middlewares
+
+                        <ul>
+                                                            <li class="">
+                                    <a href="http://poe-framework.github.io/middlewares/application.html">
+                                        Application
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="http://poe-framework.github.io/middlewares/router.html">
+                                        Router
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="http://poe-framework.github.io/middlewares/twig.html">
+                                        Twig
+                                    </a>
+                                </li>
+                                                    </ul>
+                    </li>
+                                    <li>
+                        Cookbooks
+
+                        <ul>
+                                                            <li class="">
+                                    <a href="http://poe-framework.github.io/cookbooks/getting-started.html">
+                                        Getting Started
+                                    </a>
+                                </li>
+                                                    </ul>
+                    </li>
+                            </ul>
+        </div>
+
+        <article>
+            <h1 id="principles">Principles</h1>
+<p>Poe is highly inspired by the work done on popular HTTP frameworks, especially, <a href="http://expressjs.com/">Express.js</a> and <a href="http://koajs.com/">Koa</a>. It also follows
+some <strong>principles</strong> which make it a modern an powerful framework:</p>
+<ul>
+<li>Everything is built on top of <strong>standards</strong> (PSR-*),</li>
+<li>Everything is a <strong><a href="middlewares.html">middleware</a></strong>,</li>
+<li>Everything is a <strong>generator</strong>.</li>
+</ul>
+<h2 id="standards">Standards</h2>
+<p>The PHP community has an active group which goal is to standardize components to ease interoperability. The <a href="http://www.php-fig.org/">PHP-FIG</a>
+already issued some specifications about interesting topics:</p>
+<ul>
+<li>PSR-1: <a href="http://www.php-fig.org/psr/psr-1/">Basic Coding Standard</a></li>
+<li>PSR-2: <a href="http://www.php-fig.org/psr/psr-2/">Coding Style Guide</a></li>
+<li>PSR-4: <a href="http://www.php-fig.org/psr/psr-4/">Autoloading Standard</a></li>
+<li>PSR-7: <a href="http://www.php-fig.org/psr/psr-7/">HTTP Message Interface</a></li>
+<li>PSR-11: <a href="http://www.php-fig.org/psr/psr-11/">Container Interface</a> <em>(currently a draft)</em></li>
+</ul>
+<p>Poe is built on top of every PSR listed above. This is to make contribution and integration easier. There is one more
+PSR to come that we might have used: PSR-15 <a href="http://www.php-fig.org/psr/psr-15/">HTTP Middlewares</a> <em>(currently a draft)</em>. We chose not to implement this
+specification because it adds too much complexity for a simple middleware implementation. Let's see why and how we
+define <strong>middlewares</strong> in Poe.</p>
+<h2 id="middlewares">Middlewares</h2>
+<blockquote>
+<p>HTTP middleware has been an important concept on other web development platforms for a good number of years, and
+since the introduction of a formal HTTP Messages standard has been growing increasingly popular with web frameworks.</p>
+<p>— <a href="https://github.com/php-fig/fig-standards/blob/master/proposed/http-middleware/middleware.md">https://github.com/php-fig/fig-standards/blob/master/proposed/http-middleware/middleware.md</a></p>
+</blockquote>
+<p><strong>Composing</strong> middlewares to build applications is <strong>a really powerful approach</strong>. We can compose simple components to built
+a more complex application. Each of these components will have to <strong>handle a simple task</strong> which can be summed this up as:</p>
+<blockquote>
+<p>A middleware is something that takes a request (and a next) and produces a response.</p>
+<p>— Mathieu Napoli</p>
+</blockquote>
+<p>Yes, this is as simple is that. The current state of the PSR-15 defines <strong>a heavy object model</strong> for such a simple task.
+Middleware implementors will have to make their middlewares compliant with two interfaces: the <code>MiddlewareInterface</code> and
+the <code>DelegateInterface</code>. </p>
+<p>Within Poe, a middleware can be of one of the following form:</p>
+<ul>
+<li>A <strong>class</strong> that implements the <code>Poe\middleware</code> interface,</li>
+<li>A simple <strong>callable</strong>.</li>
+</ul>
+<p>When called, the middleware will receive two arguments: the context and the <em>next</em> callable. </p>
+<p>The first one, the context will allow the middleware to act on the request or the response, but not directly. The second
+one is just a simple function. When called it lets the current middleware trigger every other middlewares in the stack. </p>
+<p>This trigger <strong>does not take any argument nor returns anything</strong>. It just produces a <strong>generator</strong>.</p>
+<h2 id="generators">Generators</h2>
+        </article>
+
+    </div>
+
+
+            <footer>
+            <div class='container'>
+                                    <p>
+                        A question? Not satisfied with the documentation?
+                        Please <a href="https://github.com/poe/poe/issues/new">create an issue</a>
+                    </p>
+                                <p>
+                    Made by <a href="https://github.com/jubianchi/">Julien Bianchi</a>
+                    and <a href="https://github.com/poe/poe/graphs/contributors">contributors</a>
+                    |
+                    Website generated with
+                    <a href="http://couscous.io/" target="_blank">Couscous</a>.
+                </p>
+            </div>
+        </footer>
+    
+            <script src="http://poe-framework.github.io/js/jquery.min.js"></script>
+        <script src="http://poe-framework.github.io/js/highlight.js"></script>
+
+        <script>
+            $(function() {
+                hljs.initHighlightingOnLoad();
+            });
+        </script>
+    
+</body>
+</html>

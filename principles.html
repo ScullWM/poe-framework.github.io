@@ -139,11 +139,16 @@ the <code>DelegateInterface</code>. </p>
 <li>A <strong>class</strong> that implements the <code>Poe\middleware</code> interface,</li>
 <li>A simple <strong>callable</strong>.</li>
 </ul>
-<p>When called, the middleware will receive two arguments: the context and the <em>next</em> callable. </p>
-<p>The first one, the context will allow the middleware to act on the request or the response, but not directly. The second
+<p>When called, the middleware will receive two arguments: the <a href="context.html">context</a> and the <em>next</em> callable. </p>
+<p>The first one, the <a href="context.html">context</a> will allow the middleware to act on the request or the response, but not directly. The second
 one is just a simple function. When called it lets the current middleware trigger every other middlewares in the stack. </p>
 <p>This trigger <strong>does not take any argument nor returns anything</strong>. It just produces a <strong>generator</strong>.</p>
 <h2 id="generators">Generators</h2>
+<p>Why did we chose to build everything in Poe around generators?</p>
+<p>Generators are one of the <strong>newest PHP feature</strong>. Basically, they are just a mean to <strong>easily write iterators</strong> but we
+can achieve much more than just that. Take a look at the <a href="https://icicle.io/">icicle</a> library for example, or at those <a href="https://speakerdeck.com/jubianchi/en-route-vers-le-multi-tache">slides</a> <em>(fr)</em>.</p>
+<p>As you may have seen generators allows us to write powerful things using <strong>coroutines</strong> and this is what we prepare for.
+In Poe every <a href="middlewares.html">middleware</a> is a generator, every <em>next</em> is a generator and everything consumes other generators!</p>
         </article>
 
     </div>
@@ -166,7 +171,7 @@ one is just a simple function. When called it lets the current middleware trigge
         </footer>
     
             <script src="https://poe-framework.github.io/js/jquery.min.js"></script>
-        <script src="https://poe-framework.github.io/js/highlight.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
 
         <script>
             $(function() {

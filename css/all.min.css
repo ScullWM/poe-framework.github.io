@@ -9184,6 +9184,9 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   font-size: 150%;
   margin-bottom: 35px;
 }
+.home table {
+  margin: 0 auto;
+}
 .home table tr td:not(:first-of-type),
 .home table tr th:not(:first-of-type) {
   padding: .5em 0;

@@ -98,6 +98,51 @@
 
         <article>
             <h1 id="middlewares">Middlewares</h1>
+<p>In Poe, everything is a middleware. Even the <a href="/middlewares/application.html">highest component</a> (the <code>Application</code>) you will use is a middleware. As said before, we chose to
+not follow the <a href="http://www.php-fig.org/psr/psr-15/">PSR-15</a> for practical reason: we don't want to introduce an heavy object-oriented model over a simple
+concept.</p>
+<p>To define a middleware, you will only have to follow <strong>three rules</strong>: </p>
+<ul>
+<li>a middleware is a callable,</li>
+<li>it takes two arguments, a <a href="context.html">context</a> and a <em>next</em> callable,</li>
+<li>it returns a <code>Generator</code>.</li>
+</ul>
+<p>You are free to define it as a function:</p>
+<pre><code class="language-php">&lt;?php
+
+namespace Me\Myself;
+
+use Poe\Context;
+
+function middleware(Context $context, callable $next) : \Generator
+{
+    // Do whatever you want here
+
+    yield from $next();
+
+    // Do whatever you want here
+}</code></pre>
+<p>But you can also define is as a class:</p>
+<pre><code class="language-php">&lt;?php
+
+namespace Me\Myself;
+
+use Poe;
+use Poe\Context;
+
+class Middleware implements Poe\Middleware
+{
+    public function __invoke(Context $context, callable $next) : \Generator
+    {
+        // Do whatever you want here
+
+        yield from $next();
+
+        // Do whatever you want here
+    }    
+}</code></pre>
+<p>As you can see, we are implementing the <code>Poe\middleware</code> interface: keep in mind that this is totally optionnal. A
+middleware is <strong>just a callable</strong> which produce a <code>Generator</code> and consumes a <code>Generator</code>. </p>
         </article>
 
     </div>
@@ -120,7 +165,7 @@
         </footer>
     
             <script src="https://poe-framework.github.io/js/jquery.min.js"></script>
-        <script src="https://poe-framework.github.io/js/highlight.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
 
         <script>
             $(function() {

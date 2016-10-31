@@ -1,4 +1,4 @@
 ---
 layout: documentation-index
-section: middlewares
+section: cookbooks
 ---

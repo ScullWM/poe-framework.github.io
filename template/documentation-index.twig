@@ -3,17 +3,19 @@
 {% set content %}
 
         {% for itemId, item in documentation %}
-            <h3>{{ item.section }}</h3>
+            {% if section is not defined or section == itemId %}
+                <h2>{{ item.section }}</h2>
 
-            <ul>
-                {% for itemId, item in item.items %}
-                    <li class="{{ itemId == current_menu ? 'active' }}">
-                        <a href="{{ item.absoluteUrl|default(baseUrl ~ '/' ~ item.url) }}">
-                            {{ item.text|raw }}
-                        </a>
-                    </li>
-                {% endfor %}
-            </ul>
+                <ul>
+                    {% for itemId, item in item.items %}
+                        <li class="{{ itemId == current_menu ? 'active' }}">
+                            <a href="{{ item.absoluteUrl|default(baseUrl ~ '/' ~ item.url) }}">
+                                {{ item.text|raw }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
         {% endfor %}
 
 {% endset %}

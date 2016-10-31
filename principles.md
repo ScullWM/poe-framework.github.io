@@ -51,18 +51,27 @@ Within Poe, a middleware can be of one of the following form:
 * A **class** that implements the `Poe\middleware` interface,
 * A simple **callable**.
 
-When called, the middleware will receive two arguments: the context and the _next_ callable. 
+When called, the middleware will receive two arguments: the [context] and the _next_ callable. 
 
-The first one, the context will allow the middleware to act on the request or the response, but not directly. The second 
+The first one, the [context] will allow the middleware to act on the request or the response, but not directly. The second 
 one is just a simple function. When called it lets the current middleware trigger every other middlewares in the stack. 
 
 This trigger **does not take any argument nor returns anything**. It just produces a **generator**.
 
 ## Generators
 
+Why did we chose to build everything in Poe around generators?
+
+Generators are one of the **newest PHP feature**. Basically, they are just a mean to **easily write iterators** but we 
+can achieve much more than just that. Take a look at the [icicle] library for example, or at those [slides] _(fr)_.
+
+As you may have seen generators allows us to write powerful things using **coroutines** and this is what we prepare for. 
+In Poe every [middleware] is a generator, every _next_ is a generator and everything consumes other generators!
+
 [Express.js]: http://expressjs.com/
 [Koa]: http://koajs.com/
 [middleware]: middlewares.html
+[context]: context.html
 [PHP-FIG]: http://www.php-fig.org/
 [Basic Coding Standard]: http://www.php-fig.org/psr/psr-1/
 [Coding Style Guide]: http://www.php-fig.org/psr/psr-2/
@@ -70,3 +79,5 @@ This trigger **does not take any argument nor returns anything**. It just produc
 [HTTP Message Interface]: http://www.php-fig.org/psr/psr-7/
 [Container Interface]: http://www.php-fig.org/psr/psr-11/
 [HTTP Middlewares]: http://www.php-fig.org/psr/psr-15/
+[icicle]: https://icicle.io/
+[slides]: https://speakerdeck.com/jubianchi/en-route-vers-le-multi-tache
